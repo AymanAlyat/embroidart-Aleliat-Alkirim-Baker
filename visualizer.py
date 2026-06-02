@@ -44,8 +44,46 @@ class Visualizer:
 
         plt.show()
 
-    def compare_original_and_pattern(self, original_image, stitches):
-        pass
+    def compare_original_and_pattern(self, original_image, stitches):#not required construc.
+
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
+
+        ax1.imshow(original_image)
+
+
+        xs = []
+        ys = []
+        colors = []
+        sizes = []
+
+        for stitch in stitches:
+
+            xs.append(stitch["x"])
+            ys.append(stitch["y"])
+
+            r, g, b = stitch["color"]
+            colors.append([r / 255, g / 255, b / 255])
+
+            if stitch["type"] == "fill":
+                sizes.append(8)#small size 
+            else:
+
+                sizes.append(12)
+        ax2.scatter(xs, ys, c=colors, s=sizes, marker=".")
+
+        ax2.invert_yaxis()
+
+
+        ax2.set_facecolor("#f5f0e8")
+
+
+
+        fig.suptitle("Smart Mini Embroidery Machine — Pattern Preview")
+
+        plt.show()
+
+
 
     def show_thread_colors(self, colors):
         pass
