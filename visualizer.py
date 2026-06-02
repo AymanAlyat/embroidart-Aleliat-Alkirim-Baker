@@ -86,4 +86,34 @@ class Visualizer:
 
 
     def show_thread_colors(self, colors):
-        pass
+        
+
+        fig, ax = plt.subplots(figsize=(8, 2))#return tow value figure and axes .fig dont care
+
+
+        for i, color in enumerate(colors):
+
+            r, g, b = color
+
+            rect = plt.Rectangle(
+                (i, 0),1,1,
+
+                color=[r / 255, g / 255, b / 255]
+            )
+
+            ax.add_patch(rect)
+
+
+            hex_color = f"#{r:02X}{g:02X}{b:02X}"
+
+            ax.text(i + 0.1, -0.2, hex_color)
+
+
+        ax.set_xlim(0, len(colors))
+        ax.set_ylim(-0.5, 1)
+
+        ax.axis("off")
+
+        plt.show()
+
+
