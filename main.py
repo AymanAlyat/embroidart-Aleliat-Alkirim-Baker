@@ -27,6 +27,28 @@ def cmd_generate(args):
 
     stitches = generator.generate_pattern(edge_map,index_map,colors)
 
+    if args.output:#if the val ==>then give true
+
+        if args.output.endswith(".json"):
+            manager.save_json(stitches, args.output)
+
+        elif args.output.endswith(".csv"):
+            manager.save_csv(stitches, args.output)
+
+#Embrodary task 2.3
+
+
+
+    if not args.no_preview:
+
+        if args.compare:
+
+
+            visualizer.compare_original_and_pattern(image,stitches)
+
+        else:
+            visualizer.preview_pattern(stitches)
+
 
 def cmd_preview(args):
     pass
