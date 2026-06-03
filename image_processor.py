@@ -17,3 +17,6 @@ def load_image(self, path: str):
 
 def to_numpy(self, image):
     return np.array(image)
+def resize_for_embroidery(self, image):
+    image.thumbnail((150, 150), Image.LANCZOS)
+    return image
