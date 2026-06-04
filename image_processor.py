@@ -34,3 +34,21 @@ def detect_edges(self, image):
     edges = cv2.Canny(blurred, 50, 150)
 
     return edges
+
+def quantize_colors(self, image, n_colors=6):
+    quantized = image.quantize(colors=n_colors)
+
+    palette_flat = quantized.getpalette()[:n_colors * 3]
+
+    colors = []
+
+    for i in range(0, len(palette_flat), 3):
+        r = palette_flat[i]
+        g = palette_flat[i + 1]
+        b = palette_flat[i + 2]
+
+        colors.append((r, g, b))
+
+    index_map = np.array(quantized)
+
+    return index_map, colors
