@@ -17,3 +17,11 @@ for x, y in petals:
 
 draw.ellipse([10, 10, 60, 60], fill=(100, 200, 100))
 draw.line([35, 60, 35, 190], fill=(34, 139, 34), width=4)
+
+
+img.save(output_path)
+print(f"Test image saved: {output_path}")
+
+
+if __name__ == "__main__":
+    create_test_image()
