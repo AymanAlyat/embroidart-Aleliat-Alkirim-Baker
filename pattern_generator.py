@@ -17,6 +17,7 @@ class PatternGenerator:
             })
 
         return stitches
+    
     def fill_to_stitches(self, index_map: np.ndarray, colors: list, stitch_gap: int = 3) -> list:
         stitches = []
 
@@ -34,3 +35,17 @@ class PatternGenerator:
                 })
 
         return stitches
+    
+    def generate_pattern(self, edge_map, index_map, colors) -> list:
+        outline_stitches = self.edges_to_stitches(edge_map)
+
+        fill_stitches = self.fill_to_stitches(
+            index_map,
+            colors
+        )
+
+        pattern = fill_stitches + outline_stitches
+
+        print(f"Total stitches: {len(pattern)}")
+
+        return pattern
