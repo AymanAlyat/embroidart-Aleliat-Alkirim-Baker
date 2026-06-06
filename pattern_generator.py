@@ -17,3 +17,20 @@ class PatternGenerator:
             })
 
         return stitches
+    def fill_to_stitches(self, index_map: np.ndarray, colors: list, stitch_gap: int = 3) -> list:
+        stitches = []
+
+        for color_idx, color in enumerate(colors):
+            mask = (index_map == color_idx)
+
+            ys, xs = np.where(mask)
+
+            for x, y in zip(xs[::stitch_gap], ys[::stitch_gap]):
+                stitches.append({
+                    "x": int(x),
+                    "y": int(y),
+                    "color": list(color),
+                    "type": "fill"
+                })
+
+        return stitches
