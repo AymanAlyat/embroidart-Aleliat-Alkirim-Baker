@@ -43,3 +43,20 @@ class FileManager:
                 writer.writerow(row)
 
         print(f"Pattern saved to {filepath} ({len(stitches)} stitches)")
+    def load_csv(self, filepath: str) -> list:
+        stitches = []
+
+        with open(filepath, "r", newline="") as f:
+            reader = csv.DictReader(f)
+
+            for row in reader:
+                stitches.append({
+                    "x": int(row["x"]),
+                    "y": int(row["y"]),
+                    "color": ast.literal_eval(row["color"]),
+                    "type": row["type"]
+                })
+
+        print(f"Loaded {len(stitches)} stitches from {filepath}")
+
+        return stitches
