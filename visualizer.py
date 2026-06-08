@@ -114,6 +114,8 @@ class Visualizer:
 
         ax.axis("off")
 
+
         plt.show()
+
 
 

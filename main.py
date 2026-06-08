@@ -27,6 +27,10 @@ def cmd_generate(args):
 
     stitches = generator.generate_pattern(edge_map,index_map,colors)
 
+
+    visualizer.show_thread_colors(colors)
+
+
     if args.output:#if the val ==>then give true
 
         if args.output.endswith(".json"):
@@ -101,6 +105,11 @@ def main():#from your template in git hup
     prev.add_argument("file")
 
     prev.set_defaults(func=cmd_preview)
+
+
+    args = parser.parse_args()
+    args.func(args)
+
 
 
 
